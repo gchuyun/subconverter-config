@@ -1,6 +1,6 @@
 version = 1
-
 [custom]
+clash_rule_base = "https://raw.githubusercontent.com/gchuyun/subconverter-config/main/GeneralClashConfig.yml"
 
 [[custom_groups]]
 name = "🚀 节点选择"
@@ -12,6 +12,14 @@ name = "👍 测速优选"
 type = "url-test"
 rule = [".*"]
 url = "http://www.gstatic.com/generate_204"
+interval = 300
+
+[[custom_groups]]
+name = "♻️ 负载轮询"
+type = "load-balance"
+strategy = "round-robin"
+url = "http://www.gstatic.com/generate_204"
+rule = [".*"]
 interval = 300
 
 [[custom_groups]]
