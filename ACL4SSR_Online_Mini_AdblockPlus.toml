@@ -66,12 +66,7 @@ rule = ["[]🚀 节点选择", "[]👍 测速优选", "[]DIRECT", "[]REJECT", ".
 
 
 [[rulesets]]
-group = "♻️ 负载轮询"
-rule = "DOMAIN-SUFFIX,deepl.com"
-
-[[rulesets]]
-group = "Ⓜ️ 微软服务"
-rule = "PROCESS-NAME,Microsoft Edge Helper"
+import = "https://raw.githubusercontent.com/gchuyun/subconverter-config/main/MyRules.yml"
 
 [[rulesets]]
 group = "🚀 节点选择"
