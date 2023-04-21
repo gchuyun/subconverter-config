@@ -1,0 +1,200 @@
+;acl4SSR规则-在线版
+
+version = 1
+
+[custom]
+enable_rule_generator=true
+overwrite_original_rules=true
+clash_rule_base=https://raw.githubusercontent.com/gchuyun/subconverter-config/master/Clash/GeneralClashConfig.yml
+
+[[custom_groups]]
+name = "🚀 节点选择"
+type = "select"
+rule = ["[]👍 测速优选", "[]DIRECT", ".*"]
+# custom_proxy_group=🚀 节点选择`select`[]👍 测速优选`[]DIRECT`.*
+
+[[custom_groups]]
+name = "👍 测速优选"
+type = "url-test"
+rule = [".*"]
+url = "http://www.gstatic.com/generate_204"
+interval = 300
+
+[[custom_groups]]
+name = "♻️ 负载轮询"
+type = "load-balance"
+strategy = "round-robin"
+url = "http://www.gstatic.com/generate_204"
+rule = [".*"]
+interval = 300
+
+[[custom_groups]]
+name = "📺 国外媒体"
+type = "load-balance"
+strategy = "consistent-hashing"
+url = "http://www.gstatic.com/generate_204"
+rule = ["(NF|奈飞|Netflix|NETFLIX|油管|Youtebu|YOUTUBE|流媒体|Media)","[]🚀 节点选择", "[]👍 测速优选", "[]DIRECT", "[]REJECT"]
+interval = 300
+
+[[custom_groups]]
+name = "📢 谷歌FCM"
+type = "select"
+rule = ["[]🚀 节点选择", "[]👍 测速优选", "[]DIRECT", "[]REJECT", ".*"]
+
+[[custom_groups]]
+name = "🍎 苹果服务"
+type = "select"
+rule = ["[]DIRECT", "[]🚀 节点选择", "[]👍 测速优选", "[]REJECT", ".*"]
+
+[[custom_groups]]
+name = "Ⓜ️ 微软服务"
+type = "select"
+rule = ["[]🚀 节点选择", "[]👍 测速优选", "[]DIRECT", "[]REJECT", ".*"]
+
+[[custom_groups]]
+name = "🤖 OpenAI"
+type = "select"
+rule = ["[]🚀 节点选择", "[]👍 测速优选", "[]DIRECT", "[]REJECT", ".*"]
+
+[[custom_groups]]
+name = "🆎 AdBlock"
+type = "select"
+rule = ["[]REJECT", "[]DIRECT"]
+
+[[custom_groups]]
+name = "🐟 漏网之鱼"
+type = "select"
+rule = ["[]🚀 节点选择", "[]👍 测速优选", "[]DIRECT", "[]REJECT", ".*"]
+
+
+[[rulesets]]
+group = "♻️ 负载轮询"
+rule = "DOMAIN-SUFFIX,deepl.com"
+
+[[rulesets]]
+group = "Ⓜ️ 微软服务"
+rule = "PROCESS-NAME,Microsoft Edge Helper"
+
+[[rulesets]]
+group = "🚀 节点选择"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list"
+interval = 86400
+
+[[rulesets]]
+group = "📺 国外媒体"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list"
+interval = 86400
+
+[[rulesets]]
+group = "📺 国外媒体"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTube.list"
+interval = 86400
+
+[[rulesets]]
+group = "📺 国外媒体"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Netflix.list"
+interval = 86400
+
+[[rulesets]]
+group = "📢 谷歌FCM"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleFCM.list"
+interval = 86400
+
+[[rulesets]]
+group = "🍎 苹果服务"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.list"
+interval = 86400
+
+[[rulesets]]
+group = "Ⓜ️ 微软服务"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Microsoft.list"
+interval = 86400
+
+[[rulesets]]
+group = "🤖 OpenAI"
+ruleset = "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/OpenAI/OpenAI.list"
+interval = 86400
+
+[[rulesets]]
+group = "🆎 AdBlock"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list"
+interval = 86400
+
+[[rulesets]]
+group = "🆎 AdBlock"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list"
+interval = 86400
+
+[[rulesets]]
+group = "🆎 AdBlock"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanEasyList.list"
+interval = 86400
+
+[[rulesets]]
+group = "🆎 AdBlock"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanEasyListChina.list"
+interval = 86400
+
+[[rulesets]]
+group = "🆎 AdBlock"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanEasyPrivacy.list"
+interval = 86400
+
+
+[[rulesets]]
+group = "DIRECT"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list"
+interval = 86400
+
+[[rulesets]]
+group = "DIRECT"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list"
+interval = 86400
+
+[[rulesets]]
+group = "DIRECT"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/GoogleCN.list"
+interval = 86400
+
+[[rulesets]]
+group = "DIRECT"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/SteamCN.list"
+interval = 86400
+
+[[rulesets]]
+group = "DIRECT"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaIp.list"
+interval = 86400
+
+[[rulesets]]
+group = "DIRECT"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list"
+interval = 86400
+
+[[rulesets]]
+group = "DIRECT"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaCompanyIp.list"
+interval = 86400
+
+[[rulesets]]
+group = "DIRECT"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Download.list"
+interval = 86400
+
+[[rulesets]]
+group = "DIRECT"
+ruleset = "[]GEOIP,LAN"
+
+[[rulesets]]
+group = "DIRECT"
+ruleset = "[]GEOIP,CN"
+
+[[rulesets]]
+group = "🐟 漏网之鱼"
+ruleset = "[]FINAL"
+
+
+[[template_args]]
+key = "clash.dns.port"
+value = "5353"
+
