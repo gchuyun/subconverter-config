@@ -9,7 +9,6 @@ clash_rule_base="https://raw.githubusercontent.com/gchuyun/subconverter-config/m
 name = "🚀 节点选择"
 type = "select"
 rule = ["[]👍 测速优选", "[]DIRECT", ".*"]
-# custom_proxy_group=🚀 节点选择`select`[]👍 测速优选`[]DIRECT`.*
 
 [[custom_groups]]
 name = "👍 测速优选"
@@ -65,8 +64,8 @@ type = "select"
 rule = ["[]🚀 节点选择", "[]👍 测速优选", "[]DIRECT", "[]REJECT", ".*"]
 
 
-[[rulesets]]
-import = "https://raw.githubusercontent.com/gchuyun/subconverter-config/main/MyRules.yml"
+# [[rulesets]]
+# import = "https://raw.githubusercontent.com/gchuyun/subconverter-config/main/MyRules.yml"
 
 [[rulesets]]
 group = "🚀 节点选择"
