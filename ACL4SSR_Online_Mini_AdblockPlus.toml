@@ -5,7 +5,7 @@ version = 1
 [custom]
 enable_rule_generator=true
 overwrite_original_rules=true
-clash_rule_base=https://raw.githubusercontent.com/gchuyun/subconverter-config/master/Clash/GeneralClashConfig.yml
+clash_rule_base=https://raw.githubusercontent.com/gchuyun/subconverter-config/main/GeneralClashConfig.yml
 
 [[custom_groups]]
 name = "🚀 节点选择"
