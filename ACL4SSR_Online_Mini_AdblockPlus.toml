@@ -192,9 +192,3 @@ ruleset = "[]GEOIP,CN"
 [[rulesets]]
 group = "🐟 漏网之鱼"
 ruleset = "[]FINAL"
-
-
-[[template_args]]
-key = "clash.dns.port"
-value = "5353"
-
