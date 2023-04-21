@@ -1,0 +1,49 @@
+version = 1
+[custom]
+# Clash config base used by the generator, supports local files/URL
+clash_rule_base = "base/all_base.tpl"
+
+[[custom_groups]]
+name = "Auto"
+type = "url-test"
+rule = [".*"]
+url = "http://www.gstatic.com/generate_204"
+interval = 300
+tolerance = 150
+lazy = true
+
+[[custom_groups]]
+name = "Proxy"
+type = "select"
+rule = [".*", "[]DIRECT"]
+disable_udp = false
+
+[[custom_groups]]
+name = "LoadBalance"
+type = "load-balance"
+rule = [".*", "[]Proxy", "[]DIRECT"]
+interval = 100
+strategy = "consistent-hashing"
+url = "http://www.gstatic.com/generate_204"
+
+[[custom_groups]]
+import = "snippets/groups.toml"
+
+[ruleset]
+# Enable generating rules with rulesets
+enabled = true
+
+# Overwrite the existing rules in rule_base
+overwrite_original_rules = false
+
+# Perform a ruleset update on request
+update_ruleset_on_request = false
+
+[[rulesets]]
+group = "Proxy"
+ruleset = "https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/Unbreak.list"
+type = "surge-ruleset"
+interval = 86400
+
+[[rulesets]]
+import = "snippets/rulesets.toml"
