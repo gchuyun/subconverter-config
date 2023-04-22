@@ -67,7 +67,7 @@ overwrite_original_rules = true
 # update_ruleset_on_request = false
 
 [[rulesets]]
-import = "https://raw.githubusercontent.com/gchuyun/subconverter-config/main/MyRules.yml"
+import = "https://raw.githubusercontent.com/gchuyun/subconverter-config/main/MyRules.txt"
 
 [[rulesets]]
 group = "🚀 节点选择"
