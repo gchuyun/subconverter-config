@@ -1,4 +1,4 @@
  rulesets:
-  - {rule: "PROCESS-NAME,Microsoft Edge Helper", group: "Ⓜ️ 微软服务"}
-  - {rule: "DOMAIN-SUFFIX,deepl.com", group: "♻️ 负载轮询"}
+  - {rule: "[]PROCESS-NAME,Microsoft Edge Helper", group: "Ⓜ️ 微软服务"}
+  - {rule: "[]DOMAIN-SUFFIX,deepl.com", group: "♻️ 负载轮询"}
   
