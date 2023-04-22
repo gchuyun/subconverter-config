@@ -1,0 +1,2 @@
+ruleset=Ⓜ️ 微软服务,[]PROCESS-NAME,Microsoft Edge Helper
+ruleset=♻️ 负载轮询,[]DOMAIN-SUFFIX,deepl.com
