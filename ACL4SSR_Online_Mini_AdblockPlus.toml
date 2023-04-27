@@ -73,9 +73,9 @@ overwrite_original_rules = true
 group = "Ⓜ️ 微软服务"
 ruleset = "[]PROCESS-NAME,Microsoft Edge Helper"
 
-[[rulesets]]
-group = "♻️ 负载轮询"
-ruleset = "[]DOMAIN-SUFFIX,deepl.com"
+# [[rulesets]]
+# group = "♻️ 负载轮询"
+# ruleset = "[]DOMAIN-SUFFIX,deepl.com"
 
 [[rulesets]]
 group = "🚀 节点选择"
