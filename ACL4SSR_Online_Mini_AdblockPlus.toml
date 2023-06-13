@@ -97,6 +97,10 @@ ruleset = "[]DOMAIN-SUFFIX,microsoftonline.com"
 group = "Ⓜ️ 微软服务"
 ruleset = "[]DOMAIN-SUFFIX,windows.com"
 
+[[rulesets]]
+group = "DIRECT"
+ruleset = "[]DOMAIN,captive.apple.com"
+
 # [[rulesets]]
 # group = "♻️ 负载轮询"
 # ruleset = "[]DOMAIN-SUFFIX,deepl.com"
