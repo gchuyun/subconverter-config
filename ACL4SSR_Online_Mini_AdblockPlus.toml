@@ -116,6 +116,9 @@ ruleset = "[]DOMAIN-KEYWORD,porn"
 [[rulesets]]
 group = "REJECT"
 ruleset = "[]DOMAIN-KEYWORD,sex"
+[[rulesets]]
+group = "REJECT"
+ruleset = "[]DOMAIN,jable.tv"
 
 # [[rulesets]]
 # group = "♻️ 负载轮询"
