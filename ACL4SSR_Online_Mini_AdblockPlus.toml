@@ -108,6 +108,9 @@ ruleset = "[]DOMAIN-KEYWORD,dybz"
 group = "REJECT"
 ruleset = "[]DOMAIN-KEYWORD,diyibanzhu"
 [[rulesets]]
+group = "DIRECT"
+ruleset = "[]DOMAIN-KEYWORD,java"
+[[rulesets]]
 group = "REJECT"
 ruleset = "[]DOMAIN-KEYWORD,jav"
 [[rulesets]]
