@@ -101,6 +101,22 @@ ruleset = "[]DOMAIN-SUFFIX,windows.com"
 group = "DIRECT"
 ruleset = "[]DOMAIN,captive.apple.com"
 
+[[rulesets]]
+group = "REJECT"
+ruleset = "[]DOMAIN-KEYWORD,dybz"
+[[rulesets]]
+group = "REJECT"
+ruleset = "[]DOMAIN-KEYWORD,diyibanzhu"
+[[rulesets]]
+group = "REJECT"
+ruleset = "[]DOMAIN-KEYWORD,jav"
+[[rulesets]]
+group = "REJECT"
+ruleset = "[]DOMAIN-KEYWORD,porn"
+[[rulesets]]
+group = "REJECT"
+ruleset = "[]DOMAIN-KEYWORD,sex"
+
 # [[rulesets]]
 # group = "♻️ 负载轮询"
 # ruleset = "[]DOMAIN-SUFFIX,deepl.com"
