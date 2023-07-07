@@ -75,27 +75,10 @@ ruleset = "[]PROCESS-NAME,Microsoft Edge Helper"
 
 [[rulesets]]
 group = "Ⓜ️ 微软服务"
-ruleset = "[]DOMAIN-SUFFIX,bing.com"
-
+ruleset = "[]DOMAIN,www.bing.com"
 [[rulesets]]
 group = "Ⓜ️ 微软服务"
-ruleset = "[]DOMAIN-SUFFIX,live.com"
-
-[[rulesets]]
-group = "Ⓜ️ 微软服务"
-ruleset = "[]DOMAIN-SUFFIX,msn.com"
-
-[[rulesets]]
-group = "Ⓜ️ 微软服务"
-ruleset = "[]DOMAIN-SUFFIX,microsoft.com"
-
-[[rulesets]]
-group = "Ⓜ️ 微软服务"
-ruleset = "[]DOMAIN-SUFFIX,microsoftonline.com"
-
-[[rulesets]]
-group = "Ⓜ️ 微软服务"
-ruleset = "[]DOMAIN-SUFFIX,windows.com"
+ruleset = "[]DOMAIN,sydney.bing.com"
 
 [[rulesets]]
 group = "DIRECT"
@@ -122,6 +105,9 @@ ruleset = "[]DOMAIN-KEYWORD,sex"
 [[rulesets]]
 group = "REJECT"
 ruleset = "[]DOMAIN,jable.tv"
+[[rulesets]]
+group = "REJECT"
+ruleset = "[]DOMAIN,avgle.com"
 
 # [[rulesets]]
 # group = "♻️ 负载轮询"
