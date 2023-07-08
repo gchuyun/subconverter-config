@@ -27,28 +27,28 @@ name = "📺 国外媒体"
 type = "select"
 strategy = "consistent-hashing"
 url = "http://www.gstatic.com/generate_204"
-rule = ["(NF|奈飞|Netflix|NETFLIX|油管|Youtebu|YOUTUBE|流媒体|Media)","[]🚀 节点选择", "[]👍 测速优选", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["(NF|奈飞|Netflix|NETFLIX|油管|Youtebu|YOUTUBE|流媒体|Media)", "[]👍 测速优选", "[]🚀 节点选择", "[]DIRECT", "[]REJECT", ".*"]
 interval = 300
 
 [[custom_groups]]
 name = "📢 谷歌FCM"
 type = "select"
-rule = ["[]🚀 节点选择", "[]👍 测速优选", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]👍 测速优选", "[]🚀 节点选择", "[]DIRECT", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🍎 苹果服务"
 type = "select"
-rule = ["[]DIRECT", "[]🚀 节点选择", "[]👍 测速优选", "[]REJECT", ".*"]
+rule = ["[]DIRECT", "[]👍 测速优选", "[]🚀 节点选择", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "Ⓜ️ 微软服务"
 type = "select"
-rule = ["[]🚀 节点选择", "[]👍 测速优选", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]👍 测速优选", "[]🚀 节点选择", "[]DIRECT", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🤖 OpenAI"
 type = "select"
-rule = ["[]🚀 节点选择", "[]👍 测速优选", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]👍 测速优选", "[]🚀 节点选择", "[]DIRECT", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🆎 AdBlock"
@@ -58,7 +58,7 @@ rule = ["[]REJECT", "[]DIRECT"]
 [[custom_groups]]
 name = "🐟 漏网之鱼"
 type = "select"
-rule = ["[]🚀 节点选择", "[]👍 测速优选", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]👍 测速优选", "[]🚀 节点选择", "[]DIRECT", "[]REJECT", ".*"]
 
 
 [ruleset]
