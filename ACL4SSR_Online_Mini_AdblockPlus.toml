@@ -56,11 +56,6 @@ type = "select"
 rule = ["[]🛩️ 国外最快", "[]🚀 全球最快", "[]🛩 美国最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
 
 [[custom_groups]]
-name = "🎵 谷歌音乐"
-type = "select"
-rule = ["[]🛩️ 国外最快", "[]🚀 全球最快", "[]🛩 美国最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
-
-[[custom_groups]]
 name = "🔔 谷歌FCM"
 type = "select"
 rule = ["[]DIRECT", "[]🚀 全球最快", "[]🛩️ 国外最快", "[]🛩 美国最快", "[]👍 统一选择", "[]REJECT", ".*"]
@@ -73,7 +68,7 @@ rule = ["[]DIRECT", "[]🚀 全球最快", "[]🛩️ 国外最快", "[]🛩 美
 [[custom_groups]]
 name = "🇬 谷歌服务"
 type = "select"
-rule = ["[]🚀 全球最快", "[]🛩️ 国外最快", "[]🛩 美国最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]🛩️ 国外最快", "[]🚀 全球最快", "[]🛩 美国最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🍎 苹果服务"
@@ -181,11 +176,6 @@ interval = 86400
 [[rulesets]]
 group = "🇦🇮 AI服务"
 ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/OpenAi.list"
-interval = 86400
-
-[[rulesets]]
-group = "🎵 谷歌音乐"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTubeMusic.list"
 interval = 86400
 
 [[rulesets]]
