@@ -21,7 +21,14 @@ interval = 300
 [[custom_groups]]
 name = "🛩️ 国外最快"
 type = "url-test"
-rule = ["!(港|台)"]
+rule = ["^(?!.*(🇭🇰|港|HK|Hong|🇹🇼|台|TW|Tai))"]
+url = "http://www.gstatic.com/generate_204"
+interval = 300
+
+[[custom_groups]]
+name = "🛩 美国最快"
+type = "url-test"
+rule = ["^(?=.*(🇺🇸|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States))"]
 url = "http://www.gstatic.com/generate_204"
 interval = 300
 
@@ -36,42 +43,42 @@ interval = 300
 [[custom_groups]]
 name = "👍 统一选择"
 type = "select"
-rule = ["[]🚀 全球最快", "[]🛩️ 国外最快", "[]DIRECT", ".*"]
+rule = ["[]🚀 全球最快", "[]🛩️ 国外最快", "[]🛩 美国最快", "[]DIRECT", ".*"]
  
 [[custom_groups]]
 name = "🖳 GitHub"
 type = "select"
-rule = ["[]🚀 全球最快", "[]🛩️ 国外最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]🚀 全球最快", "[]🛩️ 国外最快", "[]🛩 美国最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🇦🇮 AI服务"
 type = "select"
-rule = ["[]🛩️ 国外最快", "[]🚀 全球最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]🛩️ 国外最快", "[]🚀 全球最快", "[]🛩 美国最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🎵 谷歌音乐"
 type = "select"
-rule = ["[]🛩️ 国外最快", "[]🚀 全球最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]🛩️ 国外最快", "[]🚀 全球最快", "[]🛩 美国最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🔔 谷歌FCM"
 type = "select"
-rule = ["[]DIRECT", "[]🚀 全球最快", "[]🛩️ 国外最快", "[]👍 统一选择", "[]REJECT", ".*"]
+rule = ["[]DIRECT", "[]🚀 全球最快", "[]🛩️ 国外最快", "[]🛩 美国最快", "[]👍 统一选择", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🇲 微软服务"
 type = "select"
-rule = ["[]DIRECT", "[]🚀 全球最快", "[]🛩️ 国外最快", "[]👍 统一选择", "[]REJECT", ".*"]
+rule = ["[]DIRECT", "[]🚀 全球最快", "[]🛩️ 国外最快", "[]🛩 美国最快", "[]👍 统一选择", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🇬 谷歌服务"
 type = "select"
-rule = ["[]🚀 全球最快", "[]🛩️ 国外最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]🚀 全球最快", "[]🛩️ 国外最快", "[]🛩 美国最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🍎 苹果服务"
 type = "select"
-rule = ["[]DIRECT", "[]🚀 全球最快", "[]🛩️ 国外最快", "[]👍 统一选择", "[]REJECT", ".*"]
+rule = ["[]DIRECT", "[]🚀 全球最快", "[]🛩️ 国外最快", "[]🛩 美国最快", "[]👍 统一选择", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🆎 AdBlock"
@@ -81,7 +88,7 @@ rule = ["[]REJECT", "[]DIRECT"]
 [[custom_groups]]
 name = "🌐 全球连通"
 type = "select"
-rule = ["[]🚀 全球最快", "[]🛩️ 国外最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]🚀 全球最快", "[]🛩️ 国外最快", "[]🛩 美国最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
 
 
 [ruleset]
