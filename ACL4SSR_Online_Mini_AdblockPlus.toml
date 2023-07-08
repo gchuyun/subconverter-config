@@ -97,13 +97,10 @@ overwrite_original_rules = true
 [[rulesets]]
 group = "🇦🇮 AI服务"
 ruleset = "[]PROCESS-NAME,Microsoft Edge Helper"
+[[rulesets]]
+group = "🇦🇮 AI服务"
+ruleset = "[]DOMAIN-SUFFIX,bing.com"
 
-[[rulesets]]
-group = "🇦🇮 AI服务"
-ruleset = "[]DOMAIN,www.bing.com"
-[[rulesets]]
-group = "🇦🇮 AI服务"
-ruleset = "[]DOMAIN,sydney.bing.com"
 
 [[rulesets]]
 group = "DIRECT"
