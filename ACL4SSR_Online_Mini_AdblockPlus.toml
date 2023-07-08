@@ -8,8 +8,8 @@ clash_rule_base = "https://raw.githubusercontent.com/gchuyun/subconverter-config
 # 服务 github、ai
 # 公司 google、microsoft
 # gfw
-# 其他
 # 直连
+# 其他
 
 [[custom_groups]]
 name = "🚀 全球最快"
@@ -136,37 +136,6 @@ ruleset = "[]DOMAIN-KEYWORD,diyibanzhu"
 # group = "♻️ 负载轮询"
 # ruleset = "[]DOMAIN-SUFFIX,deepl.com"
 
-
-[[rulesets]]
-group = "🇦🇮 AI服务"
-ruleset = "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/OpenAI/OpenAI.list"
-interval = 86400
-
-[[rulesets]]
-group = "🎵 谷歌音乐"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTubeMusic.list"
-interval = 86400
-
-[[rulesets]]
-group = "🔔 谷歌FCM"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleFCM.list"
-interval = 86400
-
-[[rulesets]]
-group = "🍎 苹果服务"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.list"
-interval = 86400
-
-[[rulesets]]
-group = "🇲 微软服务"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Microsoft.list"
-interval = 86400
-
-[[rulesets]]
-group = "🇬 谷歌服务"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Google.list"
-interval = 86400
-
 [[rulesets]]
 group = "🆎 AdBlock"
 ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list"
@@ -200,6 +169,36 @@ interval = 86400
 [[rulesets]]
 group = "🆎 AdBlock"
 ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Porn.list"
+interval = 86400
+
+[[rulesets]]
+group = "🇦🇮 AI服务"
+ruleset = "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/OpenAI/OpenAI.list"
+interval = 86400
+
+[[rulesets]]
+group = "🎵 谷歌音乐"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTubeMusic.list"
+interval = 86400
+
+[[rulesets]]
+group = "🔔 谷歌FCM"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleFCM.list"
+interval = 86400
+
+[[rulesets]]
+group = "🍎 苹果服务"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.list"
+interval = 86400
+
+[[rulesets]]
+group = "🇲 微软服务"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Microsoft.list"
+interval = 86400
+
+[[rulesets]]
+group = "🇬 谷歌服务"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Google.list"
 interval = 86400
 
 [[rulesets]]
