@@ -180,7 +180,7 @@ interval = 86400
 
 [[rulesets]]
 group = "🇦🇮 AI服务"
-ruleset = "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/OpenAI/OpenAI.list"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/OpenAi.list"
 interval = 86400
 
 [[rulesets]]
@@ -195,17 +195,17 @@ interval = 86400
 
 [[rulesets]]
 group = "🍎 苹果服务"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.list"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Apple.list"
 interval = 86400
 
 [[rulesets]]
 group = "🇲 微软服务"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Microsoft.list"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Microsoft.list"
 interval = 86400
 
 [[rulesets]]
 group = "🇬 谷歌服务"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Google.list"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Google.list"
 interval = 86400
 
 [[rulesets]]
