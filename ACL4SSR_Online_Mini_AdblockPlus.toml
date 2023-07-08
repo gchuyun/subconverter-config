@@ -12,9 +12,16 @@ clash_rule_base = "https://raw.githubusercontent.com/gchuyun/subconverter-config
 # 直连
 
 [[custom_groups]]
-name = "🚀 测速最快"
+name = "🚀 全球最快"
 type = "url-test"
 rule = [".*"]
+url = "http://www.gstatic.com/generate_204"
+interval = 300
+
+[[custom_groups]]
+name = "🛩️ 国外最快"
+type = "url-test"
+rule = ["!(港|台)"]
 url = "http://www.gstatic.com/generate_204"
 interval = 300
 
@@ -29,42 +36,42 @@ interval = 300
 [[custom_groups]]
 name = "👍 统一选择"
 type = "select"
-rule = ["[]🚀 测速最快", "[]DIRECT", ".*"]
+rule = ["[]🚀 全球最快", "[]🛩️ 国外最快", "[]DIRECT", ".*"]
  
 [[custom_groups]]
 name = "🖳 GitHub"
 type = "select"
-rule = ["[]🚀 测速最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]🚀 全球最快", "[]🛩️ 国外最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🇦🇮 AI服务"
 type = "select"
-rule = ["[]🚀 测速最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]🛩️ 国外最快", "[]🚀 全球最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
 
 [[custom_groups]]
-name = "▶︎ 国外媒体"
+name = "🎵 谷歌音乐"
 type = "select"
-rule = ["(NF|奈飞|Netflix|NETFLIX|油管|Youtebu|YOUTUBE|流媒体|Media)", "[]🚀 测速最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]🛩️ 国外最快", "[]🚀 全球最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
 
 [[custom_groups]]
-name = "📣 谷歌FCM"
+name = "🔔 谷歌FCM"
 type = "select"
-rule = ["[]🚀 测速最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]DIRECT", "[]🚀 全球最快", "[]🛩️ 国外最快", "[]👍 统一选择", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🇲 微软服务"
 type = "select"
-rule = ["[]🚀 测速最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]DIRECT", "[]🚀 全球最快", "[]🛩️ 国外最快", "[]👍 统一选择", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🇬 谷歌服务"
 type = "select"
-rule = ["[]🚀 测速最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]🚀 全球最快", "[]🛩️ 国外最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🍎 苹果服务"
 type = "select"
-rule = ["[]DIRECT", "[]🚀 测速最快", "[]👍 统一选择", "[]REJECT", ".*"]
+rule = ["[]DIRECT", "[]🚀 全球最快", "[]🛩️ 国外最快", "[]👍 统一选择", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🆎 AdBlock"
@@ -72,9 +79,9 @@ type = "select"
 rule = ["[]REJECT", "[]DIRECT"]
 
 [[custom_groups]]
-name = "🐟 漏网之鱼"
+name = "🌐 全球连通"
 type = "select"
-rule = ["[]🚀 测速最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]🚀 全球最快", "[]🛩️ 国外最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
 
 
 [ruleset]
@@ -86,26 +93,20 @@ overwrite_original_rules = true
 # import = "https://raw.githubusercontent.com/gchuyun/subconverter-config/main/MyRules.txt"
 
 [[rulesets]]
-group = "Ⓜ️ 微软服务"
+group = "🇦🇮 AI服务"
 ruleset = "[]PROCESS-NAME,Microsoft Edge Helper"
 
 [[rulesets]]
-group = "Ⓜ️ 微软服务"
+group = "🇦🇮 AI服务"
 ruleset = "[]DOMAIN,www.bing.com"
 [[rulesets]]
-group = "Ⓜ️ 微软服务"
+group = "🇦🇮 AI服务"
 ruleset = "[]DOMAIN,sydney.bing.com"
 
 [[rulesets]]
 group = "DIRECT"
 ruleset = "[]DOMAIN,captive.apple.com"
 
-[[rulesets]]
-group = "REJECT"
-ruleset = "[]DOMAIN-KEYWORD,dybz"
-[[rulesets]]
-group = "REJECT"
-ruleset = "[]DOMAIN-KEYWORD,diyibanzhu"
 [[rulesets]]
 group = "DIRECT"
 ruleset = "[]DOMAIN-KEYWORD,java"
@@ -124,33 +125,30 @@ ruleset = "[]DOMAIN,jable.tv"
 [[rulesets]]
 group = "REJECT"
 ruleset = "[]DOMAIN,avgle.com"
+[[rulesets]]
+group = "REJECT"
+ruleset = "[]DOMAIN-KEYWORD,dybz"
+[[rulesets]]
+group = "REJECT"
+ruleset = "[]DOMAIN-KEYWORD,diyibanzhu"
 
 # [[rulesets]]
 # group = "♻️ 负载轮询"
 # ruleset = "[]DOMAIN-SUFFIX,deepl.com"
 
+
 [[rulesets]]
-group = "👍 统一选择"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list"
+group = "🇦🇮 AI服务"
+ruleset = "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/OpenAI/OpenAI.list"
 interval = 86400
 
 [[rulesets]]
-group = "📺 国外媒体"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list"
+group = "🎵 谷歌音乐"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTubeMusic.list"
 interval = 86400
 
 [[rulesets]]
-group = "📺 国外媒体"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTube.list"
-interval = 86400
-
-[[rulesets]]
-group = "📺 国外媒体"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Netflix.list"
-interval = 86400
-
-[[rulesets]]
-group = "📢 谷歌FCM"
+group = "🔔 谷歌FCM"
 ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleFCM.list"
 interval = 86400
 
@@ -160,13 +158,13 @@ ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.
 interval = 86400
 
 [[rulesets]]
-group = "Ⓜ️ 微软服务"
+group = "🇲 微软服务"
 ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Microsoft.list"
 interval = 86400
 
 [[rulesets]]
-group = "🤖 OpenAI"
-ruleset = "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/OpenAI/OpenAI.list"
+group = "🇬 谷歌服务"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Google.list"
 interval = 86400
 
 [[rulesets]]
@@ -194,6 +192,25 @@ group = "🆎 AdBlock"
 ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanEasyPrivacy.list"
 interval = 86400
 
+[[rulesets]]
+group = "🆎 AdBlock"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Porn.list"
+interval = 86400
+
+[[rulesets]]
+group = "🆎 AdBlock"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Porn.list"
+interval = 86400
+
+[[rulesets]]
+group = "🌐 全球连通"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list"
+interval = 86400
+
+[[rulesets]]
+group = "🌐 全球连通"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list"
+interval = 86400
 
 [[rulesets]]
 group = "DIRECT"
@@ -244,5 +261,5 @@ group = "DIRECT"
 ruleset = "[]GEOIP,CN"
 
 [[rulesets]]
-group = "🐟 漏网之鱼"
+group = "🌐 全球连通"
 ruleset = "[]FINAL"
