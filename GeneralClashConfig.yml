@@ -1,7 +1,7 @@
 mixed-port: 7890
 unified-delay: false
 geodata-mode: true
-tcp-concurrent: false
+tcp-concurrent: true
 find-process-mode: strict
 # global-client-fingerprint: chrome
 
