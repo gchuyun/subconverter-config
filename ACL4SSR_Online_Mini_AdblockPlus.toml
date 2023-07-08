@@ -3,11 +3,6 @@ version = 1
 clash_rule_base = "https://raw.githubusercontent.com/gchuyun/subconverter-config/main/GeneralClashConfig.yml"
 
 [[custom_groups]]
-name = "🚀 节点选择"
-type = "select"
-rule = ["[]👍 测速优选", "[]DIRECT", ".*"]
-
-[[custom_groups]]
 name = "👍 测速优选"
 type = "url-test"
 rule = [".*"]
@@ -23,11 +18,16 @@ rule = [".*"]
 interval = 300
 
 [[custom_groups]]
+name = "🚀 节点选择"
+type = "select"
+rule = ["[]👍 测速优选", "[]DIRECT", ".*"]
+
+[[custom_groups]]
 name = "📺 国外媒体"
-type = "load-balance"
+type = "select"
 strategy = "consistent-hashing"
 url = "http://www.gstatic.com/generate_204"
-rule = ["(NF|奈飞|Netflix|NETFLIX|油管|Youtebu|YOUTUBE|流媒体|Media)","[]🚀 节点选择", "[]👍 测速优选", "[]DIRECT", "[]REJECT"]
+rule = ["(NF|奈飞|Netflix|NETFLIX|油管|Youtebu|YOUTUBE|流媒体|Media)","[]🚀 节点选择", "[]👍 测速优选", "[]DIRECT", "[]REJECT", ".*"]
 interval = 300
 
 [[custom_groups]]
