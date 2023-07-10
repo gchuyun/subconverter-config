@@ -133,7 +133,7 @@ ruleset = "[]DOMAIN,captive.apple.com"
 
 [[rulesets]]
 group = "REJECT"
-ruleset = "[]geosite:category-porn"
+ruleset = "[]geosite,category-porn"
 
 # [[rulesets]]
 # group = "♻️ 负载轮询"
