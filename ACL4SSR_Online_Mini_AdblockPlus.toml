@@ -19,9 +19,9 @@ url = "http://www.gstatic.com/generate_204"
 interval = 300
 
 [[custom_groups]]
-name = "🛩️ 国外最快"
+name = "🛩️ 境外最快"
 type = "url-test"
-rule = ["^(?!.*(🇭🇰|港|HK|Hong|🇹🇼|台|TW|Tai))"]
+rule = ["^(?!.*(🇭🇰|港|HK|Hong))"]
 url = "http://www.gstatic.com/generate_204"
 interval = 300
 
@@ -43,37 +43,37 @@ interval = 300
 [[custom_groups]]
 name = "👍 统一选择"
 type = "select"
-rule = ["[]🚀 全球最快", "[]🛩️ 国外最快", "[]🛩 美国最快", "[]DIRECT", ".*"]
+rule = ["[]🚀 全球最快", "[]🛩️ 境外最快", "[]🛩 美国最快", "[]DIRECT", ".*"]
  
 [[custom_groups]]
 name = "🖳 GitHub"
 type = "select"
-rule = ["[]🚀 全球最快", "[]🛩️ 国外最快", "[]🛩 美国最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]🚀 全球最快", "[]🛩️ 境外最快", "[]🛩 美国最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🇦🇮 AI服务"
 type = "select"
-rule = ["[]🛩️ 国外最快", "[]🚀 全球最快", "[]🛩 美国最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]🛩️ 境外最快", "[]🚀 全球最快", "[]🛩 美国最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🔔 谷歌FCM"
 type = "select"
-rule = ["[]DIRECT", "[]🚀 全球最快", "[]🛩️ 国外最快", "[]🛩 美国最快", "[]👍 统一选择", "[]REJECT", ".*"]
+rule = ["[]DIRECT", "[]🚀 全球最快", "[]🛩️ 境外最快", "[]🛩 美国最快", "[]👍 统一选择", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🇲 微软服务"
 type = "select"
-rule = ["[]DIRECT", "[]🚀 全球最快", "[]🛩️ 国外最快", "[]🛩 美国最快", "[]👍 统一选择", "[]REJECT", ".*"]
+rule = ["[]DIRECT", "[]🚀 全球最快", "[]🛩️ 境外最快", "[]🛩 美国最快", "[]👍 统一选择", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🇬 谷歌服务"
 type = "select"
-rule = ["[]🛩️ 国外最快", "[]🚀 全球最快", "[]🛩 美国最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]🛩️ 境外最快", "[]🚀 全球最快", "[]🛩 美国最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🍎 苹果服务"
 type = "select"
-rule = ["[]DIRECT", "[]🚀 全球最快", "[]🛩️ 国外最快", "[]🛩 美国最快", "[]👍 统一选择", "[]REJECT", ".*"]
+rule = ["[]DIRECT", "[]🚀 全球最快", "[]🛩️ 境外最快", "[]🛩 美国最快", "[]👍 统一选择", "[]REJECT", ".*"]
 
 [[custom_groups]]
 name = "🆎 AdBlock"
@@ -83,7 +83,7 @@ rule = ["[]REJECT", "[]DIRECT"]
 [[custom_groups]]
 name = "🌐 全球连通"
 type = "select"
-rule = ["[]🚀 全球最快", "[]🛩️ 国外最快", "[]🛩 美国最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]🚀 全球最快", "[]🛩️ 境外最快", "[]🛩 美国最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
 
 
 [ruleset]
@@ -106,30 +106,34 @@ ruleset = "[]DOMAIN-SUFFIX,bing.com"
 group = "DIRECT"
 ruleset = "[]DOMAIN,captive.apple.com"
 
-[[rulesets]]
-group = "DIRECT"
-ruleset = "[]DOMAIN-KEYWORD,java"
+# [[rulesets]]
+# group = "DIRECT"
+# ruleset = "[]DOMAIN-KEYWORD,java"
+# [[rulesets]]
+# group = "REJECT"
+# ruleset = "[]DOMAIN-KEYWORD,jav"
+# [[rulesets]]
+# group = "REJECT"
+# ruleset = "[]DOMAIN-KEYWORD,porn"
+# [[rulesets]]
+# group = "REJECT"
+# ruleset = "[]DOMAIN-KEYWORD,sex"
+# [[rulesets]]
+# group = "REJECT"
+# ruleset = "[]DOMAIN,jable.tv"
+# [[rulesets]]
+# group = "REJECT"
+# ruleset = "[]DOMAIN,avgle.com"
+# [[rulesets]]
+# group = "REJECT"
+# ruleset = "[]DOMAIN-KEYWORD,dybz"
+# [[rulesets]]
+# group = "REJECT"
+# ruleset = "[]DOMAIN-KEYWORD,diyibanzhu"
+
 [[rulesets]]
 group = "REJECT"
-ruleset = "[]DOMAIN-KEYWORD,jav"
-[[rulesets]]
-group = "REJECT"
-ruleset = "[]DOMAIN-KEYWORD,porn"
-[[rulesets]]
-group = "REJECT"
-ruleset = "[]DOMAIN-KEYWORD,sex"
-[[rulesets]]
-group = "REJECT"
-ruleset = "[]DOMAIN,jable.tv"
-[[rulesets]]
-group = "REJECT"
-ruleset = "[]DOMAIN,avgle.com"
-[[rulesets]]
-group = "REJECT"
-ruleset = "[]DOMAIN-KEYWORD,dybz"
-[[rulesets]]
-group = "REJECT"
-ruleset = "[]DOMAIN-KEYWORD,diyibanzhu"
+ruleset = "[]geosite:category-porn"
 
 # [[rulesets]]
 # group = "♻️ 负载轮询"
@@ -205,6 +209,12 @@ group = "🌐 全球连通"
 ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list"
 interval = 86400
 
+
+[[rulesets]]
+group = "DIRECT"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list"
+interval = 86400
+
 [[rulesets]]
 group = "DIRECT"
 ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list"
@@ -228,11 +238,6 @@ interval = 86400
 [[rulesets]]
 group = "DIRECT"
 ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaIp.list"
-interval = 86400
-
-[[rulesets]]
-group = "DIRECT"
-ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list"
 interval = 86400
 
 [[rulesets]]
