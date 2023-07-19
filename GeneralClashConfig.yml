@@ -23,15 +23,6 @@ profile:
   store-selected: true
   store-fake-ip: true
 
-sniffer:
-  enable: true
-  sniff:
-    TLS:
-      ports: [443, 8443]
-    HTTP:
-      ports: [80, 8080-8880]
-      override-destination: true
-
 # interface-name: en0
 
 tun:
@@ -72,16 +63,33 @@ tun:
 # 完整的的域名优先级高于使用通配符的域名
 # 例如: foo.example.com > *.example.com > .example.com
 
+sniffer:
+  enable: false
+  sniff:
+    TLS:
+      ports: [443, 8443]
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+      
 dns:
   enable: true # 是否启用dns false
-  ipv6: false
+  ipv6: true
   listen: 127.0.0.1:1053
   use-hosts: true
-  enhanced-mode: redir-host # 模式：redir-host或fake-ip
+  enhanced-mode: fake-ip # 模式：redir-host或fake-ip
   fake-ip-range: 198.18.0.1/16 #
   fake-ip-filter: # fake ip 白名单列表，如果你不知道这个参数的作用，请勿修改
-     - '*.lan'
-     - localhost.ptlogin2.qq.com
+    - '*.lan'
+    - localhost.ptlogin2.qq.com
+    - '+.srv.nintendo.net'
+    - '+.stun.playstation.net'
+    - '+.msftconnecttest.com'
+    - '+.msftncsi.com'
+    - '+.xboxlive.com'
+    - 'msftconnecttest.com'
+    - 'xbox.*.microsoft.com'
+    - 'captive.apple.com'
   default-nameserver:
     - 114.114.114.114
     - 8.8.8.8
@@ -89,16 +97,15 @@ dns:
     - https://223.5.5.5/dns-query
   proxy-server-nameserver:
      - https://doh.pub/dns-query
-  # nameserver-policy:
-  #   "geosite:gfw":
-  #    - 8.8.8.8 # 谷歌DNS
-  #    - 1.1.1.1 # Cloudflare DNS
-  #    - tls://dns.rubyfish.cn:853
-  #    - tls://1.0.0.1:853
-  #    - tls://dns.google:853
-  #    - https://dns.rubyfish.cn/dns-query
-  #    - https://cloudflare-dns.com/dns-query
-  #    - https://dns.google/dns-query
+  nameserver-policy:
+    "geosite:cn,private":
+      - https://doh.pub/dns-query
+      - https://dns.alidns.com/dns-query
+    "geosite:gfw":
+      - 'tls://1.0.0.1:853#🚀 全球最快'
+      - 'tls://dns.google:853#🚀 全球最快'
+      - 'https://cloudflare-dns.com/dns-query#🚀 全球最快'
+      - 'https://dns.google/dns-query#🚀 全球最快'
   nameserver:
      - 223.5.5.5 # 阿里DNS
      - 180.76.76.76 # 百度DNS
