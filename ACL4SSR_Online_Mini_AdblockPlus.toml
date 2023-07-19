@@ -81,9 +81,9 @@ type = "select"
 rule = ["[]REJECT", "[]DIRECT"]
 
 [[custom_groups]]
-name = "🌐 全球连通"
+name = "🌐 FINAL"
 type = "select"
-rule = ["[]🚀 全球最快", "[]🛩️ 境外最快", "[]🛩 美国最快", "[]👍 统一选择", "[]DIRECT", "[]REJECT", ".*"]
+rule = ["[]DIRECT", "[]👍 统一选择", "[]🚀 全球最快", "[]🛩️ 境外最快", "[]🛩 美国最快", "[]REJECT", ".*"]
 
 
 [ruleset]
@@ -175,6 +175,11 @@ ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Rulese
 interval = 86400
 
 [[rulesets]]
+group = "🖳 GitHub"
+ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Github.list"
+interval = 86400
+
+[[rulesets]]
 group = "🇦🇮 AI服务"
 ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/OpenAi.list"
 interval = 86400
@@ -200,12 +205,12 @@ ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Rulese
 interval = 86400
 
 [[rulesets]]
-group = "🌐 全球连通"
+group = "👍 统一选择"
 ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list"
 interval = 86400
 
 [[rulesets]]
-group = "🌐 全球连通"
+group = "👍 统一选择"
 ruleset = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list"
 interval = 86400
 
@@ -259,5 +264,5 @@ group = "DIRECT"
 ruleset = "[]GEOIP,CN"
 
 [[rulesets]]
-group = "🌐 全球连通"
+group = "🌐 FINAL"
 ruleset = "[]FINAL"
