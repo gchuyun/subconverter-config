@@ -102,10 +102,6 @@ group = "🇦🇮 AI服务"
 ruleset = "[]DOMAIN-SUFFIX,bing.com"
 
 [[rulesets]]
-group = "🇲 微软服务"
-ruleset = "[]DOMAIN,login.microsoftonline.com"
-
-[[rulesets]]
 group = "DIRECT"
 ruleset = "[]DOMAIN,captive.apple.com"
 
