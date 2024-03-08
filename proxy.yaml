@@ -1,0 +1,659 @@
+# 类似于 /etc/hosts, 仅支持配置单个 IP
+#hosts:
+# '*.mihomo.dev': 127.0.0.1
+# '.dev': 127.0.0.1
+# 'alpha.mihomo.dev': '::1'
+# test.com: [1.1.1.1, 2.2.2.2]
+# home.lan: lan # lan 为特别字段，将加入本地所有网卡的地址
+# baidu.com: google.com # 只允许配置一个别名
+
+proxy-providers:
+  dukou:
+    type: http # http 的 path 可空置,默认储存路径为 homedir的proxies文件夹,文件名为url的md5
+    url: "https://you_prodiver_url"
+    interval: 3600
+    path: ./profiles/proxies/dukou.yaml # 默认只允许存储在 mihomo 的 Home Dir，如果想存储到任意位置，添加环境变量 SKIP_SAFE_PATH_CHECK=1
+    health-check:
+      enable: true
+      interval: 600
+      # lazy: true
+      url: https://cp.cloudflare.com/generate_204    
+
+rules:
+  # Charles抓包
+  # - PROCESS-NAME,WeChatAppEx.exe,Charles
+  # - PROCESS-NAME,WeChat.exe,Charles
+  # - PROCESS-NAME,Code.exe,Charles
+
+  - DOMAIN-SUFFIX,coze.com,🇦🇮 AI服务
+  - DOMAIN-SUFFIX,ciciai.com,🇦🇮 AI服务
+  - DOMAIN-SUFFIX,huggingface.co,🇦🇮 AI服务
+  - DOMAIN-SUFFIX,perplexity.ai,🇦🇮 AI服务
+  - DOMAIN-SUFFIX,claude.ai,🇦🇮 AI服务
+  - DOMAIN-SUFFIX,edge.microsoft.com,🇦🇮 AI服务
+  
+  - DOMAIN-SUFFIX,githubcopilot.com,DIRECT
+  - DOMAIN,captive.apple.com,DIRECT
+
+  # 广告
+  - RULE-SET,BanAD,🆎 AdBlock
+  - RULE-SET,BanEasyList,🆎 AdBlock
+  - RULE-SET,BanEasyListChina,🆎 AdBlock
+  - RULE-SET,BanEasyPrivacy,🆎 AdBlock
+  - RULE-SET,BanProgramAD,🆎 AdBlock
+  # 18
+  - RULE-SET,Porn,REJECT
+  - RULE-SET,EHGallery,REJECT
+  # 国外
+  - RULE-SET,GitHub,🖳 GitHub
+  - RULE-SET,OpenAi,🇦🇮 AI服务
+  - RULE-SET,GoogleFCM,🔔 谷歌FCM
+  - RULE-SET,Apple,🍎 苹果服务
+  - RULE-SET,Microsoft,🇲 微软服务
+  - RULE-SET,Google,🇬 谷歌服务
+  # - RULE-SET,GoogleCN,DIRECT
+  - RULE-SET,Adobe,👍 统一选择
+  - RULE-SET,OneDrive,👍 统一选择
+  - RULE-SET,Telegram,👍 统一选择
+  # 国内
+  - RULE-SET,ChinaCompanyIp,DIRECT
+  - RULE-SET,ChinaDomain,DIRECT
+  - RULE-SET,ChinaIp,DIRECT
+  # 本地
+  - RULE-SET,Download,DIRECT
+  - RULE-SET,LocalAreaNetwork,DIRECT
+  # GFW
+  - RULE-SET,ProxyGFWlist,👍 统一选择
+  # 白名单
+  - RULE-SET,UnBan,DIRECT
+  # 媒体
+  - RULE-SET,ChinaMedia,DIRECT
+  - RULE-SET,ProxyMedia,👍 统一选择
+  - RULE-SET,AbemaTV,👍 统一选择
+  - RULE-SET,Bilibili,DIRECT
+  - RULE-SET,BilibiliHMT,👍 统一选择
+  - RULE-SET,DisneyPlus,👍 统一选择
+  - RULE-SET,HBO,👍 统一选择
+  - RULE-SET,NetEaseMusic,DIRECT
+  - RULE-SET,Netflix,👍 统一选择
+  - RULE-SET,Sony,👍 统一选择
+  - RULE-SET,Spotify,👍 统一选择
+  - RULE-SET,YouTube,👍 统一选择
+  # 购物
+  - RULE-SET,Amazon,👍 统一选择
+  - RULE-SET,AmazonIp,👍 统一选择
+  # 游戏
+  - RULE-SET,Bahamut,👍 统一选择
+  - RULE-SET,Blizzard,DIRECT
+  - RULE-SET,Epic,👍 统一选择
+  - RULE-SET,Steam,👍 统一选择
+  - RULE-SET,SteamCN,DIRECT
+  - RULE-SET,Xbox,👍 统一选择
+  # 开发
+  - RULE-SET,Developer,👍 统一选择
+  # 学术
+  - RULE-SET,Scholar,👍 统一选择
+  # 必须
+  - MATCH,🌐 FINAL
+
+proxies: # socks5
+  - name: "Charles代理"
+    type: socks5
+    server: 127.0.0.1  
+    port: 8889
+
+proxy-groups:
+  - name: Charles
+    proxies:
+      - "Charles代理"
+    type: select
+    url: "http://connect.rom.miui.com/generate_204"
+
+  - name: "🚀 全球最快"
+    type: url-test
+    filter: ".*" # 正则表达式，过滤 provider1 中节点名包含 HK 或 TW
+    use:
+      - dukou
+    # tolerance: 150
+    # lazy: true
+    # expected-status: 204 # 当健康检查返回状态码与期望值不符时，认为节点不可用
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+
+  - name: "🛩️ 境外最快"
+    type: url-test
+    filter: "^(?!.*(🇭🇰|港|HK|Hong))"
+    use:
+      - dukou    
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+    
+  - name: "🛩 美国最快"
+    type: url-test
+    filter: "^(?=.*(🇺🇸|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States))"
+    use:
+      - dukou    
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+
+  - name: "👍 统一选择"
+    type: select
+    filter: ".*"
+    use:
+      - dukou
+    proxies:
+      - "🚀 全球最快"
+      - "🛩️ 境外最快"
+      - "🛩 美国最快"
+      - DIRECT
+
+  - name: "🖳 GitHub"
+    type: select
+    filter: ".*"
+    use:
+      - dukou
+    proxies:
+      - "🚀 全球最快"
+      - "🛩️ 境外最快"
+      - "🛩 美国最快"
+      - "👍 统一选择"
+      - DIRECT
+      - REJECT
+
+  - name: "🇦🇮 AI服务"
+    type: select
+    filter: ".*"
+    use:
+      - dukou
+    proxies:
+      - "🛩️ 境外最快"
+      - "🚀 全球最快"
+      - "🛩 美国最快"
+      - "👍 统一选择"
+      - DIRECT
+      - REJECT
+  
+  - name: "🔔 谷歌FCM"
+    type: select
+    filter: ".*"
+    use:
+      - dukou
+    proxies:
+      - DIRECT
+      - "🚀 全球最快"
+      - "🛩️ 境外最快"
+      - "🛩 美国最快"
+      - "👍 统一选择"
+      - REJECT
+  
+  - name: "🇲 微软服务"
+    type: select
+    filter: ".*"
+    use:
+      - dukou
+    proxies:
+      - DIRECT
+      - "🚀 全球最快"
+      - "🛩️ 境外最快"
+      - "🛩 美国最快"
+      - "👍 统一选择"
+      - REJECT
+
+  - name: "🇬 谷歌服务"
+    type: select
+    filter: ".*"
+    use:
+      - dukou
+    proxies:
+      - "🛩️ 境外最快"
+      - "🚀 全球最快"
+      - "🛩 美国最快"
+      - "👍 统一选择"
+      - DIRECT
+      - REJECT
+
+  - name: "🍎 苹果服务"
+    type: select
+    filter: ".*"
+    use:
+      - dukou
+    proxies:
+      - DIRECT
+      - "🚀 全球最快"
+      - "🛩️ 境外最快"
+      - "🛩 美国最快"
+      - "👍 统一选择"
+      - REJECT
+
+  - name: "🆎 AdBlock"
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+      
+  - name: "🌐 FINAL"
+    type: select
+    filter: ".*"
+    use:
+      - dukou
+    proxies:
+      - DIRECT
+      - "👍 统一选择"
+      - "🚀 全球最快"
+      - "🛩️ 境外最快"
+      - "🛩 美国最快"
+      - REJECT
+
+rule-providers:
+  AbemaTV:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/AbemaTV.yaml"
+    path: ./ACL4SSR/AbemaTV.yaml
+    interval: 86400
+
+  Adobe:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Adobe.yaml"
+    path: ./ACL4SSR/Adobe.yaml
+    interval: 86400
+
+  Amazon:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Amazon.yaml"
+    path: ./ACL4SSR/Amazon.yaml
+    interval: 86400
+
+  AmazonIp:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/AmazonIp.yaml"
+    path: ./ACL4SSR/AmazonIp.yaml
+    interval: 86400
+  
+  Apple:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Apple.yaml"
+    path: ./ACL4SSR/Apple.yaml
+    interval: 86400
+
+  GitHub:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/GitHub.yaml"
+    path: ./ACL4SSR/GitHub.yaml
+    interval: 86400
+  
+  OpenAi:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/OpenAi.yaml"
+    path: ./ACL4SSR/OpenAi.yaml
+    interval: 86400
+
+  Bahamut:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Bahamut.yaml"
+    path: ./ACL4SSR/Bahamut.yaml
+    interval: 86400
+
+  Bilibili:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Bilibili.yaml"
+    path: ./ACL4SSR/Bilibili.yaml
+    interval: 86400
+
+  BilibiliHMT:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/BilibiliHMT.yaml"
+    path: ./ACL4SSR/BilibiliHMT.yaml
+    interval: 86400
+
+  Blizzard:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Blizzard.yaml"
+    path: ./ACL4SSR/Blizzard.yaml
+    interval: 86400
+
+  Developer:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Developer.yaml"
+    path: ./ACL4SSR/Developer.yaml
+    interval: 86400
+
+  DisneyPlus:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/DisneyPlus.yaml"
+    path: ./ACL4SSR/DisneyPlus.yaml
+    interval: 86400
+
+  EHGallery:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/EHGallery.yaml"
+    path: ./ACL4SSR/EHGallery.yaml
+    interval: 86400
+
+  Epic:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Epic.yaml"
+    path: ./ACL4SSR/Epic.yaml
+    interval: 86400
+   
+  Google:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Google.yaml"
+    path: ./ACL4SSR/Google.yaml
+    interval: 86400
+      
+  GoogleCN:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/GoogleCN.yaml"
+    path: ./ACL4SSR/GoogleCN.yaml
+    interval: 86400
+    
+  GoogleFCM:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/GoogleFCM.yaml"
+    path: ./ACL4SSR/GoogleFCM.yaml
+    interval: 86400
+    
+  HBO:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/HBO.yaml"
+    path: ./ACL4SSR/HBO.yaml
+    interval: 86400
+    
+  Microsoft:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Microsoft.yaml"
+    path: ./ACL4SSR/Microsoft.yaml
+    interval: 86400
+    
+  NetEaseMusic:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/NetEaseMusic.yaml"
+    path: ./ACL4SSR/NetEaseMusic.yaml
+    interval: 86400
+    
+  Netflix:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Netflix.yaml"
+    path: ./ACL4SSR/Netflix.yaml
+    interval: 86400
+    
+  OneDrive:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/OneDrive.yaml"
+    path: ./ACL4SSR/OneDrive.yaml
+    interval: 86400
+    
+  Porn:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Porn.yaml"
+    path: ./ACL4SSR/Porn.yaml
+    interval: 86400
+    
+  Scholar:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Scholar.yaml"
+    path: ./ACL4SSR/Scholar.yaml
+    interval: 86400
+    
+  Sony:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Sony.yaml"
+    path: ./ACL4SSR/Sony.yaml
+    interval: 86400
+    
+  Spotify:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Spotify.yaml"
+    path: ./ACL4SSR/Spotify.yaml
+    interval: 86400
+    
+  Steam:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Steam.yaml"
+    path: ./ACL4SSR/Steam.yaml
+    interval: 86400
+    
+  SteamCN:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/SteamCN.yaml"
+    path: ./ACL4SSR/SteamCN.yaml
+    interval: 86400
+    
+  Telegram:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Telegram.yaml"
+    path: ./ACL4SSR/Telegram.yaml
+    interval: 86400
+    
+  Xbox:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Xbox.yaml"
+    path: ./ACL4SSR/Xbox.yaml
+    interval: 86400
+
+  YouTube:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/YouTube.yaml"
+    path: ./ACL4SSR/YouTube.yaml
+    interval: 86400
+
+  BanAD:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanAD.yaml"
+    path: ./ACL4SSR/BanAD.yaml
+    interval: 86400
+    
+  BanEasyList:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanEasyList.yaml"
+    path: ./ACL4SSR/BanEasyList.yaml
+    interval: 86400
+    
+  BanEasyListChina:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanEasyListChina.yaml"
+    path: ./ACL4SSR/BanEasyListChina.yaml
+    interval: 86400
+    
+  BanEasyPrivacy:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanEasyPrivacy.yaml"
+    path: ./ACL4SSR/BanEasyPrivacy.yaml
+    interval: 86400
+    
+  BanProgramAD:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanProgramAD.yaml"
+    path: ./ACL4SSR/BanProgramAD.yaml
+    interval: 86400
+    
+  ChinaCompanyIp:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ChinaCompanyIp.yaml"
+    path: ./ACL4SSR/ChinaCompanyIp.yaml
+    interval: 86400
+    
+  ChinaDomain:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ChinaDomain.yaml"
+    path: ./ACL4SSR/ChinaDomain.yaml
+    interval: 86400
+    
+  ChinaIp:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ChinaIp.yaml"
+    path: ./ACL4SSR/ChinaIp.yaml
+    interval: 86400
+    
+  ChinaMedia:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ChinaMedia.yaml"
+    path: ./ACL4SSR/ChinaMedia.yaml
+    interval: 86400
+ 
+  Download:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Download.yaml"
+    path: ./ACL4SSR/Download.yaml
+    interval: 86400
+           
+  LocalAreaNetwork:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/LocalAreaNetwork.yaml"
+    path: ./ACL4SSR/LocalAreaNetwork.yaml
+    interval: 86400
+    
+  ProxyGFWlist:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ProxyGFWlist.yaml"
+    path: ./ACL4SSR/ProxyGFWlist.yaml
+    interval: 86400
+    
+  ProxyMedia:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ProxyMedia.yaml"
+    path: ./ACL4SSR/ProxyMedia.yaml
+    interval: 86400
+    
+  UnBan:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/UnBan.yaml"
+    path: ./ACL4SSR/UnBan.yaml
+    interval: 86400 
+
+
+mixed-port: 7890
+unified-delay: false
+geodata-mode: true
+tcp-concurrent: true
+find-process-mode: strict
+allow-lan: false
+mode: rule
+log-level: info
+ipv6: true
+external-controller: 127.0.0.1:9090
+secret: ""
+geox-url:
+  geoip: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat
+  geosite: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat
+  mmdb: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb
+profile:
+  store-selected: true
+  store-fake-ip: true
+tun:
+  enable: true
+  dns-hijack:
+    - any:53
+  auto-route: true
+  auto-detect-interface: true
+  # Android 用户和应用规则仅在 Android 下被支持
+  # 并且需要 auto-route
+  # include-android-user: # 限制被路由的 Android 用户
+  # - 0
+  # - 10
+  # include-package: # 限制被路由的 Android 应用包名
+  # - com.android.chrome
+  # exclude-package: # 排除被路由的 Android 应用包名
+  # - com.android.captiveportallogin
+dns:
+  enable: true
+  ipv6: true
+  listen: 127.0.0.1:1053
+  use-hosts: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - "*.lan"
+    - localhost.ptlogin2.qq.com
+    - +.srv.nintendo.net
+    - +.stun.playstation.net
+    - +.msftconnecttest.com
+    - +.msftncsi.com
+    - +.xboxlive.com
+    - msftconnecttest.com
+    - xbox.*.microsoft.com
+    - captive.apple.com
+  default-nameserver:
+    - 114.114.114.114
+    - 8.8.8.8
+    - tls://223.5.5.5:853
+    - https://223.5.5.5/dns-query
+  proxy-server-nameserver:
+    - https://doh.pub/dns-query
+  nameserver-policy:
+    geosite:cn,private:
+      - https://doh.pub/dns-query
+      - https://dns.alidns.com/dns-query
+    geosite:category-ads-all: rcode://success
+    geosite:gfw:
+      - tls://1.0.0.1:853#🚀 全球最快
+      - tls://dns.google:853#🚀 全球最快
+      - https://cloudflare-dns.com/dns-query#🚀 全球最快
+      - https://dns.google/dns-query#🚀 全球最快
+  nameserver:
+    - 223.5.5.5
+    - 180.76.76.76
+    - 119.29.29.29
+    - 117.50.11.11
+    - 117.50.10.10
+    - 114.114.114.114
+    - https://dns.alidns.com/dns-query
+    - https://doh.360.cn/dns-query
+  fallback:
+    - tls://1.0.0.1:853#🚀 全球最快
+    - tls://dns.google:853#🚀 全球最快
+    - https://cloudflare-dns.com/dns-query#🚀 全球最快
+    - https://dns.google/dns-query#🚀 全球最快
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite:
+      - gfw
+    ipcidr:
+      - 240.0.0.0/4
